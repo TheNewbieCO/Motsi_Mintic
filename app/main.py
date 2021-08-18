@@ -4,7 +4,7 @@ from app.models import models
 from .config.config import app_name
 from app.config.database import SessionLocal, engine
 
-#models.Base.metadata.create_all(bind=engine)
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
