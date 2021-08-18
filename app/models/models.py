@@ -9,6 +9,10 @@ class Role(Base):
     id_role = Column(Integer, primary_key=True, index=True)
     role_name = Column(String)
 
+#TENER PRESENTE: que cuando se agregan nuevos campos al modelo, se crea una tabla nueva
+#TENER PRESENTE: versionamiento en BD ALLembic (para hacer migraciones)
+#TENER PRESENTE: podria buscarse una api que guarde imagenes y devuelva links 
+#TENER PRESENTE: en fastapi hay algo que "monta una unidad" donde se guardan los archivos, para generarle una ruta (dentro del mismo servidor)
 
 
 #--------------- Se agregó el Nombre y Apellido del usuario---------------
