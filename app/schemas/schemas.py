@@ -37,7 +37,7 @@ class Activity(BaseModel):
     updated_at: None
     activity_media_file: str
     amenities: List[Amenity] = []
-    #aves: List[Aves]=[]
+    aves: List[Aves]=[]
     time_unit: TimeUnit = None
 
     class Config:
