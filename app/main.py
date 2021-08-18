@@ -6,7 +6,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 #models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+app = FastAPI(
+    title = "",
+    description = "MotsiApp",
+    version = "0.1"
+)
 
 @app.get('/inicio')
 async def ruta_de_prueba():
