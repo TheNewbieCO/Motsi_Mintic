@@ -18,7 +18,7 @@ port = 5432
 # host = config['databases']['postgresql']['host'].get()
 # port = config['databases']['postgresql']['port'].get()
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}:5431/{database}"
+SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}:{port}/{database}"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL
