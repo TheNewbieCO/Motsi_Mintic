@@ -7,31 +7,30 @@ from app.config.database import SessionLocal, engine
 #models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-try:
-    origins = [
-        "*"
-    ]
 
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=origins,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"]
-    )
 
-    @app.get("/")
-    def read_root():
-        return {"Motsi Backend" : "It's alive!!!"}
+origins = [
+    "*"
+]
 
-    def get_db():
-        db = SessionLocal()
-        try:
-            yield db
-        finally:
-            db.close()
-except Exception as e:
-    print (e)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+@app.get("/")
+def read_root():
+    return {"Motsi Backend" : "It's alive!!!"}
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 from app.api import endpoints_call
 # import sys

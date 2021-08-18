@@ -44,12 +44,12 @@ class Amenity(Base):
     id_activity = Column(Integer, ForeignKey("activity.id_activity"))
 
 #-------Clase de Aves - Jose ---------
-# class Aves(Base):
-#     __tablename__="aves"
-    
-#     amenity_media_file = Column(String)
+class Aves(Base):
+    __tablename__="aves"
 
-#     id_activity = Column(Integer, ForeignKey("activity.id_activity"))
+    id_aves= Column(Integer, primary_key=True, index=True)
+    amenity_media_file = Column(String)
+    id_activity = Column(Integer, ForeignKey("activity.id_activity"))
 
 
 
@@ -64,6 +64,7 @@ class Activity(Base):
     id_time_unit = Column(Integer, ForeignKey("time_unit.id_time_unit"))
 
     amenities = relationship("Amenity")
+    aves= relationship("Aves")
     time_unit = relationship("TimeUnit")
 
 class Service(Base):
