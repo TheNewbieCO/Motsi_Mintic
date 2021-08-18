@@ -12,21 +12,27 @@ def get_activities(
     db: Session = Depends(get_db),
     skip:int = 0, limit:int = 10
 ):
-
-    return activity_providers.get_all_activities(id, db, skip, limit)
-
+    try:
+        return activity_providers.get_all_activities(id, db, skip, limit)
+    except Exception as e:
+        return (e)
 @app.post("/api/v1/create_activty/", tags=["Activities"])
+
 def create_activity(
     activity: schemas.ActivityCreate,
-    db: Session = Depends(get_db)
-):
-
-    return activity_providers.create_activity(activity, db)
+    db: Session = Depends(get_db)):
+    try:
+        return activity_providers.create_activity(activity, db)
+    except Exception as e:
+        return (e)
 
 @app.put("/api/v1/update_activity/", tags=["Activities"])
 def update_activity(
     activity: schemas.ActivityUpdate,
     db: Session = Depends(get_db)
     ):
+    try:
 
-    return activity_providers.update_activity(activity, db)
+        return activity_providers.update_activity(activity, db)
+    except Exception as e:
+        return (e)
