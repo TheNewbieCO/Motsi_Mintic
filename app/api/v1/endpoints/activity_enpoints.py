@@ -16,6 +16,7 @@ def get_activities(
         return activity_providers.get_all_activities(id, db, skip, limit)
     except Exception as e:
         return (e)
+        
 @app.post("/api/v1/create_activty/", tags=["Activities"])
 
 def create_activity(
