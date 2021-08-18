@@ -24,12 +24,12 @@ app.add_middleware(
 def read_root():
     return {"Motsi Backend" : "It's alive!!!"}
 
-# def get_db():
-#     db = SessionLocal()
-#     try:
-#         yield db
-#     finally:
-#         db.close()
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 #from app.api import endpoints_call
 # import sys
