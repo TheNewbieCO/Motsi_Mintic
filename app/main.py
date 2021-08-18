@@ -33,7 +33,7 @@ try:
 except Exception as e:
     print (e)
 
-#from app.api import endpoints_call
+from app.api import endpoints_call
 # import sys
 
 @app.get('/inicio')

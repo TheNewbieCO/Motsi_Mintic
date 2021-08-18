@@ -53,40 +53,40 @@ class Amenity(Base):
 
 
 
-# class Activity(Base):
-#     __tablename__ = "activity"
+class Activity(Base):
+    __tablename__ = "activity"
 
-#     id_activity = Column(Integer, primary_key=True, index=True)
-#     id_user = Column(Integer, ForeignKey("user.id_user"))
-#     activity_description = Column(String)
-#     activity_media_file = Column(String)
-#     activity_ammount = Column(Integer)
-#     id_time_unit = Column(Integer, ForeignKey("time_unit.id_time_unit"))
+    id_activity = Column(Integer, primary_key=True, index=True)
+    id_user = Column(Integer, ForeignKey("user.id_user"))
+    activity_description = Column(String)
+    activity_media_file = Column(String)
+    activity_ammount = Column(Integer)
+    id_time_unit = Column(Integer, ForeignKey("time_unit.id_time_unit"))
 
-#     amenities = relationship("Amenity")
-#     time_unit = relationship("TimeUnit")
+    amenities = relationship("Amenity")
+    time_unit = relationship("TimeUnit")
 
-# class Service(Base):
-#     __tablename__ = "service"
+class Service(Base):
+    __tablename__ = "service"
 
-#     id_service = Column(Integer, primary_key=True, index=True)
-#     service_description = Column(String)
-#     service_offered_date = Column(DateTime)
-#     service_media_file = Column(String)
+    id_service = Column(Integer, primary_key=True, index=True)
+    service_description = Column(String)
+    service_offered_date = Column(DateTime)
+    service_media_file = Column(String)
 
-#     id_time_unit = Column(Integer, ForeignKey("time_unit.id_time_unit"))
+    id_time_unit = Column(Integer, ForeignKey("time_unit.id_time_unit"))
 
-# class Booking(Base):
-#     __tablename__ = "booking"
+class Booking(Base):
+    __tablename__ = "booking"
 
-#     id_booking = Column(Integer, primary_key=True, index=True)
-#     booking_date = Column(DateTime)
+    id_booking = Column(Integer, primary_key=True, index=True)
+    booking_date = Column(DateTime)
 
 
-# class Review(Base):
-#     __tablename__ = "review"
+class Review(Base):
+    __tablename__ = "review"
 
-#     id_review = Column(Integer, primary_key=True, index=True)
-#     review = Column(String)
+    id_review = Column(Integer, primary_key=True, index=True)
+    review = Column(String)
     
-#     id_booking = Column(Integer, ForeignKey("booking.id_booking"))
+    id_booking = Column(Integer, ForeignKey("booking.id_booking"))
