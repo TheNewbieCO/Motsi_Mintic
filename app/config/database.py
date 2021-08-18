@@ -6,11 +6,12 @@ from app.config.config import config
 
 from datetime import datetime
 
-user = 'smdimhchgllsmc'
-password = "912a482aed647bcb31f03df2452233d0aa700b82e8cba139b268b4f81239fc5f"
-database = 'dem7ojmeibcpak'
-host = 'ec2-44-196-132-15.compute-1.amazonaws.com'
+user = 'uqlblnzxwauflm'
+password = "c388f153ad80dc089ef09946c644277e38fb7c98400ef65fe07888b2608fc752"
+database = 'df2tf43nht9t45'
+host = 'ec2-34-194-14-176.compute-1.amazonaws.com'
 port = 5432
+
 
 # user = config['databases']['postgresql']['user'].get()
 # password = config['databases']['postgresql']['password'].get()
