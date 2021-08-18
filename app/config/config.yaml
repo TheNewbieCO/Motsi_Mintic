@@ -1,0 +1,9 @@
+appName: "MOTSI"
+
+databases:
+  postgresql:
+    host: ec2-44-196-132-15.compute-1.amazonaws.com
+    database: dem7ojmeibcpak
+    user: smdimhchgllsmc
+    port: 5432
+    password: "912a482aed647bcb31f03df2452233d0aa700b82e8cba139b268b4f81239fc5f"
