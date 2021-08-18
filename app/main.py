@@ -31,7 +31,7 @@ def read_root():
 #     finally:
 #         db.close()
 
-from app.api import endpoints_call
+#from app.api import endpoints_call
 # import sys
 
 @app.get('/inicio')
