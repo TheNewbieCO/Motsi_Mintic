@@ -1,8 +1,8 @@
 from fastapi import FastAPI, File, Form, UploadFile, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from app.models import models
-#from .config.config import app_name
-#from app.config.database import SessionLocal, engine
+from .config.config import app_name
+from app.config.database import SessionLocal, engine
 
 #models.Base.metadata.create_all(bind=engine)
 
