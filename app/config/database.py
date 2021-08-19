@@ -3,10 +3,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from app.config.config import config
-from datetime import datetime
 
-#librerias autentication
-import passlib.hash as __hash
+from datetime import datetime
 
 user = 'uqlblnzxwauflm'
 password = "c388f153ad80dc089ef09946c644277e38fb7c98400ef65fe07888b2608fc752"
@@ -39,14 +37,3 @@ class CustomBase(object):
     updated_at = Column(DateTime(), onupdate = datetime.now(), index=True)
 
 Base = declarative_base(cls=CustomBase)
-
-
-class User(Base):
-    __tablename__ = "users"
-    id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
-    
-
-    def verify_pass(self, password: str):
-        return __hash.bcrypt.verify(password, self.hashed_password)
