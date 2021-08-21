@@ -11,8 +11,8 @@ from typing import List, Optional
 def get_user(
     db: Session = Depends(get_db)
 ):
-
-    return( db_user = db.query(User))
+    db_user = db.query(User)
+    return(db_user )
 #------------ Get User (se optiene el usuario por medio del id)-----------------------------
 
 # @app.get("/api/v1/get_users/", tags=["Users"], response_model=List[schemas.User])
