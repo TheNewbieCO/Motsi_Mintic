@@ -11,7 +11,7 @@ def get_user(id_user, db):
     return db_user
 
 def create_user(user,db):
-
+ 
     user = User(
         created_at = datetime.now(),
         first_name = user.first_name,
