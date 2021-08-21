@@ -13,6 +13,7 @@ SECRET="9117515f7ac53aa8e13eab8410ffb145a5b59cd3cbfebfae"
 
 manager= LoginManager(SECRET, '/login')
 
+
 @manager.user_loader
 def query_user(id_user:str):
     base = db.query(User).filter(User.id_user == id_user).first()

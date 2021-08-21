@@ -2,6 +2,9 @@ from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Float, Date
 from sqlalchemy.orm import relationship
 
 from app.config.database import Base
+import passlib.hash as _hash
+import bcrypt
+
 
 class Role(Base):
     __tablename__ =  "role"
@@ -26,12 +29,14 @@ class User(Base):
     second_name= Column(String)
     username = Column(String)
     email = Column(String)
-    password = Column(String)
+    hashed_password = Column(String)
     created_at = Column(String)
     update_at = Column(DateTime)
     rnt = Column(String)
-
     id_role = Column(Integer, ForeignKey("role.id_role"))
+
+    def verify_pass(self, password_form: str):
+        return __hash.bcrypt.verify(password_form, self.hashed_password)
 
 class TimeUnit(Base):
     __tablename__ = "time_unit"
@@ -95,3 +100,6 @@ class Review(Base):
     review = Column(String)
     
     id_booking = Column(Integer, ForeignKey("booking.id_booking"))
+
+
+
