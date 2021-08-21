@@ -47,7 +47,7 @@ class Activity(BaseModel):
 class ActivityCreate(BaseModel):
 
     activity_description: str
-    #activity_description2: str
+    activity_description2: str
     activity_media_file: str
     activity_ammount: int
     id_time_unit : int
@@ -64,7 +64,6 @@ class ActivityUpdate(BaseModel):
 #--------- Schema User - Jose -----------------------------------
 class User(BaseModel):
 
-    id_user: int
     first_name:str
     second_name:str
     email:str
@@ -72,7 +71,7 @@ class User(BaseModel):
     type_user: str
     user_media_file:str = None
     user_description: str=None
-    activitys: List[Activity]= []
+    activities: List[Activity]= []
 
     class Config:
         orm_mode = True
@@ -83,6 +82,7 @@ class UserCreate(BaseModel):
     second_name:str
     email:str
     password:str
+    #rnt: str
     type_user: str
 
 class UserUpdate(BaseModel):
