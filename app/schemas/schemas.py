@@ -47,7 +47,7 @@ class Activity(BaseModel):
 class ActivityCreate(BaseModel):
 
     activity_description: str
-    activity_description2: str
+    #activity_description2: str
     activity_media_file: str
     activity_ammount: int
     id_time_unit : int
