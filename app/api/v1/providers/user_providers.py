@@ -13,7 +13,7 @@ def get_user(id_user, db):
 def create_user(user,db):
 
     user = User(
-        created_at = datetime.now()
+        created_at = datetime.now(),
         first_name = user.first_name,
         second_name = user.second_name,
         email = user.email,
