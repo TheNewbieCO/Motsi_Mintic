@@ -18,7 +18,7 @@ def create_activity(activity,db):
         activity_ammount = activity.activity_ammount,
         activity_media_file = activity.activity_media_file,
         #id_time_unit = activity.id_time_unit        
-        id_time_unit = 8
+        id_time_unit = 8 
     )
 
     db.add(activity)
