@@ -19,23 +19,19 @@ class Role(Base):
 #--------------- username y correo son los mismos -----------------------
 
 class User(Base):
-    __tablename__ = "user_prueba1"
+    __tablename__ = "user_prueba"
 
     id_user = Column(Integer, primary_key=True, index=True)
     first_name= Column(String)
     second_name= Column(String)
+    username = Column(String)
     email = Column(String)
     password = Column(String)
     created_at = Column(String)
     update_at = Column(DateTime)
-    #rnt = Column(String)
-    type_user = Column(String)
-#    id_role = Column(Integer, ForeignKey("role.id_role"))
-    user_media_file:str = None
-    user_description: str=None
+    rnt = Column(String)
 
-    activities = relationship("Activity")
-#    activitys = Column(Integer, ForeignKey("role.id_role"))
+    id_role = Column(Integer, ForeignKey("role.id_role"))
 
 class TimeUnit(Base):
     __tablename__ = "time_unit"
