@@ -11,7 +11,7 @@ from typing import List, Optional
 def get_user(
     db: Session = Depends(get_db)
 ):
-    db_user = db.query(User)
+    db_user = db.query(user)
     return(db_user )
 #------------ Get User (se optiene el usuario por medio del id)-----------------------------
 
