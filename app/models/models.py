@@ -34,7 +34,6 @@ class User(Base):
     user_media_file:str = None
     user_description: str=None
 
-    activities = relationship("Activity")
 #   activities = relationship("Activity")
 #    activitys = Column(Integer, ForeignKey("role.id_role"))
 
