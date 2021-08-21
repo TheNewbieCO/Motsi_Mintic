@@ -8,11 +8,11 @@ from app.schemas import schemas
 from typing import List, Optional
 
 @app.get("/api/v1/get_all_users/", tags=["Users"], response_model=List[schemas.User])
-async def get_user(
+def get_user(
     db: Session = Depends(get_db)
 ):
 
-    return( await db_user = db.query(User))
+    return( db_user = db.query(User))
 #------------ Get User (se optiene el usuario por medio del id)-----------------------------
 
 # @app.get("/api/v1/get_users/", tags=["Users"], response_model=List[schemas.User])
