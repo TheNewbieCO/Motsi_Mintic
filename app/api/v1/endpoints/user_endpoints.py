@@ -1,6 +1,7 @@
 from fastapi.params import Depends
 from fastapi import Request
-from sqlalchemy.sql.functions import User
+from sqlalchemy.sql.functions import user
+from app.models.models import User
 from app.main import app, get_db
 from app.api.v1.providers import user_providers
 from sqlalchemy.orm import Session
@@ -11,7 +12,7 @@ from typing import List, Optional
 def get_user(
     db: Session = Depends(get_db)
 ):
-    db_user = db.query(User)
+    db_user = db.query(User).all()
     return(db_user )
 #------------ Get User (se optiene el usuario por medio del id)-----------------------------
 

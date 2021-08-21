@@ -33,6 +33,7 @@ class Activity(BaseModel):
     id_activity: int   
     created_at: datetime = None
     activity_description: str
+    activity_description2: str
     activity_ammount: int
     updated_at: None
     activity_media_file: str
@@ -46,6 +47,7 @@ class Activity(BaseModel):
 class ActivityCreate(BaseModel):
 
     activity_description: str
+    activity_description2: str
     activity_media_file: str
     activity_ammount: int
     id_time_unit : int
@@ -54,6 +56,7 @@ class ActivityUpdate(BaseModel):
 
     id_activity: int
     activity_description: str
+    activity_description2: str
     activity_media_file: str
     activity_ammount: int
     id_time_unit : int
