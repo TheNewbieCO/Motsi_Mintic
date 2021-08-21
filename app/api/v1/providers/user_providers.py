@@ -13,10 +13,12 @@ def get_user(id_user, db):
 def create_user(user,db):
 
     user = User(
-        first_name = User.first_name,
-        second_name = User.second_name,
-        email = User.email,
-        password = User.password
+        created_at = datetime.now()
+        first_name = user.first_name,
+        second_name = user.second_name,
+        email = user.email,
+        password = user.password,
+        type_user = user.type_user
     )
 
     db.add(user)

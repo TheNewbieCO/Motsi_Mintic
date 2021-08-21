@@ -27,11 +27,12 @@ class User(Base):
 #    username = Column(String)
     email = Column(String)
     password = Column(String)
+    type_user = Column(String)
 #    created_at = Column(String)
 #    update_at = Column(DateTime)
 #    rnt = Column(String)
 
-    id_role = Column(Integer, ForeignKey("role.id_role"))
+#    id_role = Column(Integer, ForeignKey("role.id_role"))
 
 class TimeUnit(Base):
     __tablename__ = "time_unit"
