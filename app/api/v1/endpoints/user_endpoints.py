@@ -33,7 +33,7 @@ def create_user(
 
     return user_providers.create_user(user, db)
 
-@app.put("/api/v1/update_user/", tags=["User"])
+@app.put("/api/v1/update_user/", tags=["Users"])
 def update_user(
     user: schemas.UserUpdate,
     db: Session = Depends(get_db)
