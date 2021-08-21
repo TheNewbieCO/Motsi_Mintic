@@ -1,4 +1,4 @@
-from sqlalchemy.sql.functions import user
+from sqlalchemy.sql.functions import user as usr
 from app.models.models import Activity, Amenity, User
 from datetime import datetime
 
@@ -35,7 +35,7 @@ def update_user(user, db):
         "email": user.email,
         "password": user.password    
         }
-
+ 
     db.query(User).filter(User.id_user == user.id_user) \
         .update(update_object, synchronize_session='fetch')
 
