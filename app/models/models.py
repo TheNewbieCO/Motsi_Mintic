@@ -24,12 +24,12 @@ class User(Base):
     id_user = Column(Integer, primary_key=True, index=True)
     first_name= Column(String)
     second_name= Column(String)
-    username = Column(String)
+#    username = Column(String)
     email = Column(String)
     password = Column(String)
-    created_at = Column(String)
-    update_at = Column(DateTime)
-    rnt = Column(String)
+#    created_at = Column(String)
+#    update_at = Column(DateTime)
+#    rnt = Column(String)
 
     id_role = Column(Integer, ForeignKey("role.id_role"))
 
