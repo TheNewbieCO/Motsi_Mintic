@@ -19,7 +19,7 @@ class Role(Base):
 #--------------- username y correo son los mismos -----------------------
 
 class User(Base):
-    __tablename__ = "user1"
+    __tablename__ = "user"
 
     id_user = Column(Integer, primary_key=True, index=True)
     first_name= Column(String)
