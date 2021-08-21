@@ -1,11 +1,10 @@
   
-from sqlalchemy as _sql
-from sqlalchemy.ext.declarative as _declarative
-from sqlalchemy.orm as _orm
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 from app.config.config import config
+
 from datetime import datetime
-
-
 
 user = 'uqlblnzxwauflm'
 password = "c388f153ad80dc089ef09946c644277e38fb7c98400ef65fe07888b2608fc752"
@@ -22,9 +21,10 @@ port = 5432
 
 SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}:{port}/{database}"
 
-engine =  _sql.create_engine(SQLALCHEMY_DATABASE_URL)
-SessionLocal = _orm.sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL
+)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 from sqlalchemy import Column
 from sqlalchemy import DateTime
@@ -36,8 +36,4 @@ class CustomBase(object):
     created_at = Column(DateTime(), default = datetime.now(), index=True)
     updated_at = Column(DateTime(), onupdate = datetime.now(), index=True)
 
-Base = _declarative.declarative_base(cls=CustomBase)
-
-
-
-
+Base = declarative_base(cls=CustomBase)
