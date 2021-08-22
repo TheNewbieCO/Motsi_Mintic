@@ -3,7 +3,7 @@ from datetime import datetime
 from fastapi import HTTPException,status 
 
 def generate_token(form_data,db):
-    user_dict = db.query(User).filter_by(User.email = form_data.username)
+    user_dict = db.query(User).filter(User.email == form_data.username)
     print('-'*10,user_dict)
     if not user_dict:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
