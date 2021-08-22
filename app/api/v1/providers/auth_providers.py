@@ -22,4 +22,4 @@ def generate_token(form_data,db):
             print("match")
         return {"access_token": form_data.username, "token_type": "bearer"}
     except Exception as e:
-        return e
+        return {"error": e, "error_descr": "otra cosa"}
