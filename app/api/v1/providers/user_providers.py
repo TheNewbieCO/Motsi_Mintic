@@ -1,4 +1,4 @@
-from sqlalchemy.sql.functions import user as usr
+#from sqlalchemy.sql.functions import user as usr
 from app.models.models import Activity, Amenity, User
 from datetime import datetime
 
