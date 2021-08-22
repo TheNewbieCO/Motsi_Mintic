@@ -6,7 +6,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 def generate_token(form_data,db):
     try:
-        user_dict = db.query(User).filter(User.email == form_data.username)
+        user_dict = db.query(User).filter(User.email == form_data.username).all()
         print('-'*10,user_dict)
         if not user_dict:
             raise HTTPException(status_code=400, detail="Incorrect username or password")
