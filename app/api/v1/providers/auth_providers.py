@@ -20,6 +20,6 @@ def generate_token(form_data,db):
     #    if not hashed_password_form == hashed_password_bd:
             raise HTTPException(status_code=400, detail="Incorrect username or password")
             print("match")
-        return {"access_token": form_data.username, "token_type": "bearer"}
+        return {"access_token": User.email, "token_type": "bearer"}
     except Exception as e:
         return {"error": user_dict, "error_descr": "otra cosa"}
