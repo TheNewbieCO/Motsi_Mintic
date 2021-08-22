@@ -9,7 +9,7 @@ import bcrypt
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 @app.post("/token")
-async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     user_dict = db.query(users).filter_by(name = form_data.username)
     if not user_dict:
             raise HTTPException(status_code=400, detail="Incorrect username or password")
