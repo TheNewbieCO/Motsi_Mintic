@@ -16,8 +16,8 @@ def generate_token(form_data,db):
         print('-'*10,hashed_password_form)
         hashed_password_bd = user_dict['password']
         print('-'*10,hashed_password_bd)
-        if hashed_password_form == hashed_password_bd:
-    #    if not hashed_password_form == hashed_password_bd:
+        #if hashed_password_form == hashed_password_bd:
+        if not checkpw(hashed_password_form.encode('utf8'), hashed_password_bd.encode('utf8')):
             raise HTTPException(status_code=400, detail="Incorrect username or password")
             print("match")
         return {"access_token": User.email, "token_type": "bearer"}
