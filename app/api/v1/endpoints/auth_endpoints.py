@@ -2,9 +2,7 @@ from fastapi.params import Depends
 from app.main import app, get_db
 from app.api.v1.providers import auth_providers
 from sqlalchemy.orm import Session
-from typing import List, Optional
-import bcrypt
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+
 
 
 @app.post("/token", tags=["OAuth2"])

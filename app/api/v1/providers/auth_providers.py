@@ -1,6 +1,8 @@
 from app.models.models import User
 from datetime import datetime 
 from fastapi import HTTPException,status 
+import bcrypt
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 def generate_token(form_data,db):
     user_dict = db.query(User).filter(User.email == form_data.username)
