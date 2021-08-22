@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from app.schemas import schemas
 from typing import List, Optional
 import bcrypt
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 @app.post("/token")
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
