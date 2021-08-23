@@ -10,3 +10,5 @@ def func():
     )
     return token    
 print(func())
+
+#instalar JWT-JOSE
