@@ -1,9 +1,20 @@
 from app.models.models import User
 from datetime import datetime 
 from fastapi import HTTPException,status 
-import bcrypt
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+import bcrypt, jwt, time
+#from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+def tokengen():
+    secret = '123456' #pasar a variables de entorno
+    time_unit = int(time.time())
 
+    token = jwt.encode(
+        {'id':'1', 'nombre':'gianpier', 'time':time_unit},
+        secret,
+        algorithm='HS256'        
+    )
+    return token
+
+    
 def generate_token(form_data,db):
     
     username = form_data.username
@@ -33,6 +44,8 @@ def generate_token(form_data,db):
             raise HTTPException(status_code=400, detail="Incorrect username or password")
             print("not match")
 
-        return {"access_token": user_dict, "token_type": "bearer"}
+        return {"access_token": tokengen(), "token_type": "bearer"}
     except Exception as e:
         return {"error": user_dict, "error_descr": "otra cosa"}
+
+

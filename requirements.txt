@@ -25,3 +25,5 @@ pyjwt==2.1.0
 bcrypt==3.2.0 
 uuid==1.30
 databases==0.4.3
+cryptography==3.4.7 
+jwt==1.2.0
