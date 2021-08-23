@@ -5,7 +5,7 @@ import bcrypt
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 def generate_token(form_data,db):
-    form_data = User(
+    form_data = UserLogin(
     username = form_data.username,
     password = form_data.password,
     )
