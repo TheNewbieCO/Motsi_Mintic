@@ -12,9 +12,10 @@ def tokengen():
         secret,
         algorithm='HS256'        
     )
-    return token
+    print(token)
+    return(token)
 
-    
+
 def generate_token(form_data,db):
     
     username = form_data.username
@@ -43,8 +44,9 @@ def generate_token(form_data,db):
         #if not checkpw(hashed_password_form.encode('utf8'), hashed_password_bd.encode('utf8')):
             raise HTTPException(status_code=400, detail="Incorrect username or password")
             print("not match")
-
-        return {"access_token": tokengen(), "token_type": "bearer"}
+        token = tokengen()
+        print(token)
+        return {"access_token": token, "token_type": "bearer"}
     except Exception as e:
         return {"error": user_dict, "error_descr": "otra cosa"}
 
