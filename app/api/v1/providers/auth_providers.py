@@ -16,7 +16,7 @@ def generate_token(form_data,db):
         #hashed_password_form = bcrypt.hashpw(form_data.password, salt)
         hashed_password_form = form_data.password
         #print('-'*10,hashed_password_form)
-        hashed_password_bd = user_dict['password']
+        hashed_password_bd = user_dict.password
         #print('-'*10,hashed_password_bd)
         
         if hashed_password_form != hashed_password_bd:
