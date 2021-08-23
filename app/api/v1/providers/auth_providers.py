@@ -4,17 +4,19 @@ from fastapi import HTTPException,status
 import bcrypt, jwt, time
 #from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 def tokengen():
-    secret = '123456' #pasar a variables de entorno
-    time_unit = int(time.time())
+    try:
+        secret = '123456' #pasar a variables de entorno
+        time_unit = int(time.time())
 
-    token = jwt.encode(
-        {'id':'1', 'nombre':'gianpier', 'time':time_unit},
-        secret,
-        algorithm='HS256'        
-    )
-    print(token)
-    return(token)
-
+        token = jwt.encode(
+            {'id':'1', 'nombre':'gianpier', 'time':time_unit},
+            secret,
+            algorithm='HS256'        
+        )
+        print(token)
+        return(token)
+    except Exception as e:
+        return ('-'*5,e)
 
 def generate_token(form_data,db):
     
