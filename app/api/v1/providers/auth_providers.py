@@ -15,9 +15,9 @@ def generate_token(form_data,db):
         salt = bcrypt.gensalt()
         #hashed_password_form = bcrypt.hashpw(form_data.password, salt)
         hashed_password_form = form_data.password
-        print('-'*10,hashed_password_form)
+        #print('-'*10,hashed_password_form)
         hashed_password_bd = user_dict['password']
-        print('-'*10,hashed_password_bd)
+        #print('-'*10,hashed_password_bd)
         
         if hashed_password_form != hashed_password_bd:
         #if not checkpw(hashed_password_form.encode('utf8'), hashed_password_bd.encode('utf8')):
