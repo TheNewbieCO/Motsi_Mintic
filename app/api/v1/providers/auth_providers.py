@@ -19,19 +19,20 @@ def generate_token(form_data,db):
 
         if not user_dict:
             raise HTTPException(status_code=400, detail="Incorrect username or password")
-
+        print('hola', 3)
         #salt = bcrypt.gensalt()
         #hashed_password_form = bcrypt.hashpw(form_data.password, salt)
         hashed_password_form = form_data.password
         #print('-'*10,hashed_password_form)
-        hashed_password_bd = user_dict['password']
+        print(hashed_password_form, 4)
+        hashed_password_bd = user_dict.password
         #print('-'*10,hashed_password_bd)
-        
+        print(hashed_password_bd, 5)
         if hashed_password_form != hashed_password_bd:
         #if not checkpw(hashed_password_form.encode('utf8'), hashed_password_bd.encode('utf8')):
             raise HTTPException(status_code=400, detail="Incorrect username or password")
             print("not match")
 
-        return {"access_token": User.email, "token_type": "bearer"}
+        return {"access_token": user_dict, "token_type": "bearer"}
     except Exception as e:
         return {"error": user_dict, "error_descr": "otra cosa"}
