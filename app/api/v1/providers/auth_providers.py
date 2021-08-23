@@ -6,8 +6,6 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 def generate_token(form_data,db):
     try:
-        print('-'*10,form_data.values())
-        print('-'*10,form_data)
         user_dict = db.query(User).filter(User.email == form_data.username).first()
         print('-'*10,user_dict.values())
         if not user_dict:
