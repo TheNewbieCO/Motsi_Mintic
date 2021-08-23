@@ -25,7 +25,7 @@ class User(Base):
     first_name= Column(String)
     second_name= Column(String)
 #    username = Column(String)
-    email = Column(String)
+    email = Column(String, unique=True)
     password = Column(String)
     type_user = Column(String)
 #    created_at = Column(String)
