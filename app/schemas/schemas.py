@@ -85,6 +85,10 @@ class UserCreate(BaseModel):
     password:str
     type_user: str
 
+class UserLogin(BaseModel):
+    password: str
+    username: str
+
 class UserUpdate(BaseModel):
 
     first_name:str

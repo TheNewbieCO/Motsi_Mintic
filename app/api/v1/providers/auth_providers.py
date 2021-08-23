@@ -12,7 +12,7 @@ def generate_token(form_data,db):
         if not user_dict:
             raise HTTPException(status_code=400, detail="Incorrect username or password")
 
-        salt = bcrypt.gensalt()
+        #salt = bcrypt.gensalt()
         #hashed_password_form = bcrypt.hashpw(form_data.password, salt)
         hashed_password_form = form_data.password
         #print('-'*10,hashed_password_form)

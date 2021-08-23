@@ -2,7 +2,7 @@ from app.models.models import Activity, Amenity
 from datetime import datetime
 
 def get_all_activities(id_activity, db, skip, limit):
-
+    
     if id_activity != 0:
         db_activity = [db.query(Activity).filter(Activity.id_activity == id_activity).first()]
     else:
