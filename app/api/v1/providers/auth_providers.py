@@ -5,13 +5,15 @@ import bcrypt
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 def generate_token(form_data,db):
-    form_data = UserLogin(
-    username = form_data.username,
-    password = form_data.password,
-    )
+    
+    username = form_data.username
+    password = form_data.password
+
+    print(username)
+    print(password)
 
 
-    user_dict = db.query(User).filter(User.email == form_data.username).first()
+    user_dict = db.query(User).filter(User.email == username).first()
     try:
         print('-'*10,type(user_dict),user_dict)
 
