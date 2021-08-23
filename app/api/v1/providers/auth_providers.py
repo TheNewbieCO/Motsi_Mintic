@@ -6,7 +6,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 def generate_token(form_data,db):
     try:
-        user_dict = db.query(User).filter(User.email == form_data.username).first()
+        user_dict = dict(db.query(User).filter(User.email == form_data.username).first())
         print('-'*10,type(user_dict),user_dict)
 
         if not user_dict:
@@ -16,7 +16,7 @@ def generate_token(form_data,db):
         #hashed_password_form = bcrypt.hashpw(form_data.password, salt)
         hashed_password_form = form_data.password
         #print('-'*10,hashed_password_form)
-        hashed_password_bd = user_dict.password
+        hashed_password_bd = user_dict['password']
         #print('-'*10,hashed_password_bd)
         
         if hashed_password_form != hashed_password_bd:
