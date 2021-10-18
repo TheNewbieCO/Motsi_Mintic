@@ -22,7 +22,7 @@ def get_user(
 
 #------------ Get User (se optiene el usuario por medio del id)-----------------------------
 
-@app.get("/api/v1/get_users/", tags=["Users"], response_model=List[schemas.User])
+@app.get("/api/v1/get_users/", tags=["Users"])
 def get_user(
     token: str=Depends(oauth2_schema), 
     db: Session = Depends(get_db)
