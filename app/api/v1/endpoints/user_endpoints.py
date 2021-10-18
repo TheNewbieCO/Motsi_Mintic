@@ -28,7 +28,9 @@ def get_user(
     db: Session = Depends(get_db)
 ):
 
-    return user_providers.get_user(token, db)
+    return {
+        "token":token
+    }
 
 @app.post("/api/v1/create_user/", tags=["Users"])
 def create_user(
