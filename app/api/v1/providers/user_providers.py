@@ -12,12 +12,14 @@ def get_user(id_user, db):
 
 def create_user(user,db):
  
+    hash_password= User.create_password(user.password)
+
     user = User(
         created_at = datetime.now(),
         first_name = user.first_name,
         second_name = user.second_name,
         email = user.email,
-        password = user.password,
+        password = hash_password,
         type_user = user.type_user
     )
 
