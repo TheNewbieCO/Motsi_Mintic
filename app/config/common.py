@@ -25,7 +25,7 @@ def create_access_token(user,days=3):
 
 
 def decode_access_token(token):
-    return jwt.decode(token, SECRET_KEY, algorithm="HS256")
+    return jwt.decode(token, SECRET_KEY, algorithms="HS256")
 
 
 
