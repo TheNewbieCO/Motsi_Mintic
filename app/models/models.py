@@ -31,6 +31,13 @@ class User(Base):
 
 
     @classmethod
+    def autenticate(cls, username, password):
+        user= cls.select().where(User.email == username).first()
+        
+        if user and user.password == cls.create_password(password):
+            return user
+        
+    @classmethod
     def create_password(cls, password):
         h = hashlib.md5()
         h.update(password.encode("utf-8"))

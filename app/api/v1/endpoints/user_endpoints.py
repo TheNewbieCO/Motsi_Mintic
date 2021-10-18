@@ -1,6 +1,7 @@
 from fastapi.params import Depends
 from fastapi import Request
 from fastapi.security import HTTPBasicCredentials
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.sql.functions import user
 from app.models.models import User
 from app.main import app, get_db
@@ -54,3 +55,14 @@ def login(credentials: HTTPBasicCredentials):
 
     return user
     
+@app.post("/api/v1/auth/")
+async def  auth (data: OAuth2PasswordRequestForm=Depends()):
+    user = User.autenticate(data.username, data. password)
+
+    if user:
+        return{
+            "username": data.username
+            ,"password": data.password
+        }
+    else :
+        raise HTTPException(404,"Error al autentificar" )
