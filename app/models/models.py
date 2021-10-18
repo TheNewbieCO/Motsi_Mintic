@@ -1,7 +1,12 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Float, DateTime
 from sqlalchemy.orm import relationship
 import hashlib
+
+
 from app.config.database import Base
+
+
+
 
 class Role(Base):
     __tablename__ =  "role"
@@ -24,15 +29,15 @@ class User(Base):
     id_user = Column(Integer, primary_key=True, index=True)
     first_name= Column(String)
     second_name= Column(String)
-#    username = Column(String)
+#   username = Column(String)
     email = Column(String, unique=True)
     password = Column(String)
     type_user = Column(String)
 
 
     @classmethod
-    def autenticate(cls, username, password):
-        user= cls.where(User.email == username).first()
+    def autenticate(cls, username, password, db):
+        user = db.query(User).filter(User.email == username).first()
 
         if user and user.password == cls.create_password(password):
             return user

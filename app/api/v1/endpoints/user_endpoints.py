@@ -37,16 +37,13 @@ def create_user(
     return user_providers.create_user(user, db)
 
 @app.put("/api/v1/update_user/", tags=["Users"])
-def update_user(
-    user: schemas.UserUpdate,
-    db: Session = Depends(get_db)
-    ):
+def update_user(user: schemas.UserUpdate,db: Session = Depends(get_db)):
 
     return user_providers.update_user(user, db)
 
 @app.post("/api/v1/login/", response_model=List[schemas.UserLogin])
 def login(credentials: HTTPBasicCredentials):
-    user= User.select().where(User.email==credentials.username).first()
+    user= User.Query().where(User.email==credentials.username).first()
 
     if user is None:
         raise HTTPException(404, "User not found")
@@ -56,8 +53,8 @@ def login(credentials: HTTPBasicCredentials):
     return user
     
 @app.post("/api/v1/auth/")
-async def  auth (data: OAuth2PasswordRequestForm=Depends()):
-    user = User.autenticate(data.username, data. password)
+async def  auth (data: OAuth2PasswordRequestForm=Depends(), db: Session = Depends(get_db)):
+    user = User.autenticate(data.username, data.password, db)
 
     if user:
         return{
