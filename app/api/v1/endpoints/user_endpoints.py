@@ -39,15 +39,17 @@ def create_user(
 def update_user(user: schemas.UserUpdate,db: Session = Depends(get_db)):
 
     return user_providers.update_user(user, db)
-    
-@app.post("/api/v1/auth/")
-async def  auth (data: OAuth2PasswordRequestForm=Depends(), db: Session = Depends(get_db)):
-    user = User.autenticate(data.username, data.password, db)
+try:   
+    @app.post("/api/v1/auth/")
+    async def  auth (data: OAuth2PasswordRequestForm=Depends(), db: Session = Depends(get_db)):
+        user = User.autenticate(data.username, data.password, db)
 
-    if user:
-        return{
-            "access_token": create_access_token(user)
-            ,"token_type": "Bearer"
-        }
-    else :
-        raise HTTPException(404,"Error al autentificar" )
+        if user:
+            return{
+                "access_token": create_access_token(user)
+                ,"token_type": "Bearer"
+            }
+        else :
+            raise HTTPException(404,"Error al autentificar" )
+except Exception as e:
+    print ("-"*50,e)
