@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from app.schemas import schemas
 from typing import List, Optional
 from fastapi import HTTPException
+from app.config.common import oauth2_schema
 
 @app.get("/api/v1/get_all_users/", tags=["Users"], response_model=List[schemas.User])
 def get_user(
@@ -27,7 +28,7 @@ def get_user(
     db: Session = Depends(get_db)
 ):
 
-    return user_providers.get_user(id, db)
+    return user_providers.get_user(str(token=Depends(oauth2_schema)), db)
 
 @app.post("/api/v1/create_user/", tags=["Users"])
 def create_user(
