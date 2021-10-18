@@ -1,5 +1,6 @@
 from fastapi.params import Depends
 from fastapi import Request
+from fastapi.security import HTTPBasicCredentials
 from sqlalchemy.sql.functions import user
 from app.models.models import User
 from app.main import app, get_db
@@ -7,6 +8,7 @@ from app.api.v1.providers import user_providers
 from sqlalchemy.orm import Session
 from app.schemas import schemas
 from typing import List, Optional
+from fastapi import HTTPException
 
 @app.get("/api/v1/get_all_users/", tags=["Users"], response_model=List[schemas.User])
 def get_user(
@@ -40,3 +42,15 @@ def update_user(
     ):
 
     return user_providers.update_user(user, db)
+
+@app.post("/api/v1/login/", response_model=List[schemas.UserLogin])
+def login(credentials: HTTPBasicCredentials, response:Response):
+    user= User.select().where(User.email==credentials.username).first()
+
+    if user is None:
+        raise HTTPException(404, "User not found")
+    if user.password !=User.create_password(credentials.password):
+        raise HTTPException(404, "Password error")
+
+    return user
+    

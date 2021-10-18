@@ -1,6 +1,6 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Float, DateTime
 from sqlalchemy.orm import relationship
-
+import hashlib
 from app.config.database import Base
 
 class Role(Base):
@@ -28,6 +28,14 @@ class User(Base):
     email = Column(String, unique=True)
     password = Column(String)
     type_user = Column(String)
+
+
+    @classmethod
+    def create_password(cls, password):
+        h = hashlib.md5()
+        h.update(password.encode("utf-8"))
+        return h.hexdigest()
+
 #    created_at = Column(String)
 #    update_at = Column(DateTime)
 #    rnt = Column(String)
