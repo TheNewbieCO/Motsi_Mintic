@@ -24,11 +24,11 @@ def get_user(
 
 @app.get("/api/v1/get_users/", tags=["Users"], response_model=List[schemas.User])
 def get_user(
-    id: int, 
+    token: str=Depends(oauth2_schema), 
     db: Session = Depends(get_db)
 ):
 
-    return user_providers.get_user(str(token=Depends(oauth2_schema)), db)
+    return user_providers.get_user(token, db)
 
 @app.post("/api/v1/create_user/", tags=["Users"])
 def create_user(
