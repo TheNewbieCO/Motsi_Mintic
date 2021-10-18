@@ -3,6 +3,7 @@ from fastapi import Request
 from fastapi.security import HTTPBasicCredentials
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.sql.functions import user
+from app.config.common import create_access_token
 from app.models.models import User
 from app.main import app, get_db
 from app.api.v1.providers import user_providers
@@ -40,17 +41,6 @@ def create_user(
 def update_user(user: schemas.UserUpdate,db: Session = Depends(get_db)):
 
     return user_providers.update_user(user, db)
-
-""" @app.post("/api/v1/login/", response_model=List[schemas.UserLogin])
-def login(credentials: HTTPBasicCredentials):
-    user= User.Query().where(User.email==credentials.username).first()
-
-    if user is None:
-        raise HTTPException(404, "User not found")
-    if user.password !=User.create_password(credentials.password):
-        raise HTTPException(404, "Password error")
-
-    return user """
     
 @app.post("/api/v1/auth/")
 async def  auth (data: OAuth2PasswordRequestForm=Depends(), db: Session = Depends(get_db)):
@@ -58,8 +48,8 @@ async def  auth (data: OAuth2PasswordRequestForm=Depends(), db: Session = Depend
 
     if user:
         return{
-            "username": data.username
-            ,"password": data.password
+            "access_token": create_access_token(user)
+            ,"token_type": "Bearer"
         }
     else :
         raise HTTPException(404,"Error al autentificar" )
