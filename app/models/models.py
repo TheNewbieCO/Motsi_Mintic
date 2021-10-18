@@ -43,7 +43,7 @@ class User(Base):
             print("La contraseña si es correcta")
             return user
         print('-'*50,user)
-        print('-'*50,db.query(User))
+        print('-'*50,dict(db.query(User)))
 
         
     @classmethod
