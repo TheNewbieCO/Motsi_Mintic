@@ -40,7 +40,10 @@ class User(Base):
         user = db.query(User).filter(User.email == username).first()
 
         if user and user.password == cls.create_password(password):
+            print("La contraseña si es correcta")
             return user
+        print("contraseña incorrecta")
+
         
     @classmethod
     def create_password(cls, password):
