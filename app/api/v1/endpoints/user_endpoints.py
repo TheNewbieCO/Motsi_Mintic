@@ -41,7 +41,7 @@ def update_user(user: schemas.UserUpdate,db: Session = Depends(get_db)):
 
     return user_providers.update_user(user, db)
 
-@app.post("/api/v1/login/", response_model=List[schemas.UserLogin])
+""" @app.post("/api/v1/login/", response_model=List[schemas.UserLogin])
 def login(credentials: HTTPBasicCredentials):
     user= User.Query().where(User.email==credentials.username).first()
 
@@ -50,7 +50,7 @@ def login(credentials: HTTPBasicCredentials):
     if user.password !=User.create_password(credentials.password):
         raise HTTPException(404, "Password error")
 
-    return user
+    return user """
     
 @app.post("/api/v1/auth/")
 async def  auth (data: OAuth2PasswordRequestForm=Depends(), db: Session = Depends(get_db)):
