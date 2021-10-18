@@ -32,7 +32,7 @@ class User(Base):
 
     @classmethod
     def autenticate(cls, username, password):
-        user= cls.Select().where(User.email == username).first()
+        user= cls.where(User.email == username).first()
 
         if user and user.password == cls.create_password(password):
             return user
