@@ -42,8 +42,8 @@ class User(Base):
         if user and user.password == cls.password:
             print("La contraseña si es correcta")
             return user
-        print(user)
-        print(db.query(User))
+        print('-'*50,user)
+        print('-'*50,db.query(User))
 
         
     @classmethod
