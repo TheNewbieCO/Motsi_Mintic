@@ -15,3 +15,7 @@ def create_access_token(user,days=3):
         "exp":datetime.utcnow() + timedelta(days=days)
     }
     return jwt.encode(data, SECRET_KEY, algorithm="HS256")
+
+
+def decode_access_token(token):
+    return jwt.decode(token, SECRET_KEY, algorithm="HS256")
