@@ -4,12 +4,6 @@ from datetime import datetime
 
 #------------ Obtiene el usuario por la id y retorna la información del user ------------------
 
-def get_user(id_user, db):
-
-    db_user = db.query(User).filter(User.id_user == id_user).first()
-    
-    return db_user
-
 def create_user(user,db):
  
     hash_password= User.create_password(user.password)

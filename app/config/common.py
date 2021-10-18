@@ -1,6 +1,10 @@
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.params import Depends
+from fastapi.security import OAuth2PasswordBearer, oauth2
 import jwt
 from datetime import datetime, timedelta
+from ..models import User
+from sqlalchemy.orm import Session
+from ..main import get_db
 
 SECRET_KEY = 'Motsi-Mintic-Backend-Airbnb2008'
 
@@ -17,5 +21,20 @@ def create_access_token(user,days=3):
     return jwt.encode(data, SECRET_KEY, algorithm="HS256")
 
 
+
+
+
 def decode_access_token(token):
     return jwt.decode(token, SECRET_KEY, algorithm="HS256")
+
+
+
+
+
+def get_current_user ( token: str = Depends(oauth2_schema), db: Session = Depends(get_db) ) ->User :
+
+    data= decode_access_token(token)
+
+    db_user = db.query(User).filter(User.id_user == data["user_id"]).first()
+    
+    return db_user
