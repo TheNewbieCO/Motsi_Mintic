@@ -2,7 +2,7 @@ from fastapi.params import Depends
 from fastapi.security import OAuth2PasswordBearer, oauth2
 import jwt
 from datetime import datetime, timedelta
-from ..models import User
+from ..models.models import User
 from sqlalchemy.orm import Session
 from ..main import get_db
 
