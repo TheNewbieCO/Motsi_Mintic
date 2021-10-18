@@ -11,12 +11,12 @@ SECRET_KEY = 'Motsi-Mintic-Backend-Airbnb2008'
 
 oauth2_schema= OAuth2PasswordBearer(tokenUrl="/api/v1/auth/")
 
-def create_access_token(user,days=3):
+def create_access_token(user,days=30):
 
     data={
         "user_id":user.id_user,
         "username":user.email,
-        "exp":datetime.utcnow() + timedelta(days=days)
+        "exp":datetime.utcnow() + timedelta(seconds=days)
     }
     return jwt.encode(data, SECRET_KEY, algorithm="HS256")
 
