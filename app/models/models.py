@@ -42,7 +42,7 @@ class User(Base):
         if user and user.password == cls.create_password(password):
             print("La contraseña si es correcta")
             return user
-        print("contraseña incorrecta")
+        print(user)
 
         
     @classmethod
