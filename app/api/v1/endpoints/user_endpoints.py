@@ -43,7 +43,7 @@ def update_user(
 
     return user_providers.update_user(user, db)
 
-@app.post("/api/v1/login/", response_model=List[schemas.UserLogin])
+""" @app.post("/api/v1/login/", response_model=List[schemas.UserLogin])
 def login(credentials: HTTPBasicCredentials, response:Response):
     user= User.select().where(User.email==credentials.username).first()
 
@@ -52,5 +52,5 @@ def login(credentials: HTTPBasicCredentials, response:Response):
     if user.password !=User.create_password(credentials.password):
         raise HTTPException(404, "Password error")
 
-    return user
+    return user """
     
