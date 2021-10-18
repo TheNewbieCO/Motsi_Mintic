@@ -44,7 +44,7 @@ def update_user(
     return user_providers.update_user(user, db)
 
 @app.post("/api/v1/login/", response_model=List[schemas.UserLogin])
-def login(credentials: HTTPBasicCredentials, response:Response):
+def login(credentials: HTTPBasicCredentials):
     user= User.select().where(User.email==credentials.username).first()
 
     if user is None:
