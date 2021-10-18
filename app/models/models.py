@@ -39,7 +39,7 @@ class User(Base):
     def autenticate(cls, username, password, db):
         user = db.query(User).filter(User.email == username).first()
 
-        if user and user.password == password:
+        if user and user.password == cls.create_password(password):
             print("La contraseña si es correcta")
             return user
         print('-'*50,user)
