@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from app.config.common import decode_access_token
+from app.config.common import decode_access_token ,oauth2_schema
 from app.main import get_db
 from app.models.models import Activity2, Amenity
 from fastapi.params import Depends
@@ -18,7 +18,7 @@ def get_all_activities( db, skip, limit):
     except Exception as e:
         print(e)
         return e
-def get_all_user_activities(token,db: Session = Depends(get_db)):
+def get_all_user_activities(token =Depends(oauth2_schema),db: Session = Depends(get_db)):
 
     data= decode_access_token(token)
 
