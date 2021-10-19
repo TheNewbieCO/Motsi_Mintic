@@ -70,7 +70,8 @@ class Aves(Base):
 
     id_aves= Column(Integer, primary_key=True, index=True)
     amenity_media_file = Column(String)
-    id_activity = Column(Integer, ForeignKey("activity.id_activity"))
+    """ 
+    id_activity = Column(Integer, ForeignKey("activity.id_activity")) """
 
 
 
@@ -84,8 +85,8 @@ class Activity2(Base):
     activity_ammount = Column(Integer)
     id_time_unit = Column(Integer, ForeignKey("time_unit.id_time_unit"))
 
-    amenities = relationship("Amenity")
-    aves= relationship("Aves")
+    """ amenities = relationship("Amenity")
+    aves= relationship("Aves") """
     time_unit = relationship("TimeUnit")
 
 class Service(Base):
