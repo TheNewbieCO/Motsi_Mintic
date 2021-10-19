@@ -1,5 +1,5 @@
 #from sqlalchemy.sql.functions import user as usr
-from app.models.models import Activity, Amenity, User
+from app.models.models import Activity2, Amenity, User
 from datetime import datetime
 
 #------------ Obtiene el usuario por la id y retorna la información del user ------------------
