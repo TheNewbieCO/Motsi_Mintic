@@ -7,7 +7,7 @@ from app.models.models import Activity2
 from app.schemas import schemas
 from typing import List, Optional
 
-@app.get("/api/v1/get_activities/", tags=["Activities"], response_model=List[schemas.Activity2])
+@app.get("/api/v1/get_activities/", tags=["Activities"], response_model=List[schemas.Activity])
 def get_activities(id: int = 0, db: Session = Depends(get_db), skip:int = 0, limit:int = 10):
     try:
         return activity_providers.get_all_activities(db, skip, limit)

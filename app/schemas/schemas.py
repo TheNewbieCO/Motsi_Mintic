@@ -29,7 +29,7 @@ class TimeUnit(BaseModel):
     class Config:
         orm_mode = True
  
-class Activity2(BaseModel):
+class Activity(BaseModel):
     id_activity: int   
     created_at: datetime = None
     activity_description: str
