@@ -21,10 +21,6 @@ def get_user( activity: Activity2=Depends(activity_providers.get_all_user_activi
     return activity
         
 @app.post("/api/v1/create_activty/", tags=["Activities"])
-
-
-
-
 def create_activity(activity: schemas.ActivityCreate, db: Session = Depends(get_db), user: User=Depends(get_current_user)):
     try:
         return activity_providers.create_activity(activity, db, user.id_user)

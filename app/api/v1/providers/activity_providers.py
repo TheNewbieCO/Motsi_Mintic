@@ -10,7 +10,6 @@ from fastapi import HTTPException
 
 
 def get_all_activities( db, skip, limit):
-    
     try: 
         db_activity = db.query(Activity2).offset(skip).limit(limit).all()
 
@@ -18,12 +17,15 @@ def get_all_activities( db, skip, limit):
     except Exception as e:
         print(e)
         return e
+
+
 def get_all_user_activities(token =Depends(oauth2_schema),db: Session = Depends(get_db)):
 
     data= decode_access_token(token)
 
     if data:
         db_activities= db.query(Activity2).filter(Activity2.id_user== data["user_id"]).all()
+        print(data["user_id"])
         return db_activities
     else:
         raise HTTPException(401, "La sesión ha expirado")
