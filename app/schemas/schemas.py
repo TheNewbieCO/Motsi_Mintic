@@ -43,7 +43,6 @@ class Activity(BaseModel):
 
     class Config:
         orm_mode = True
-
 class ActivityCreate(BaseModel):
 
     activity_description: str
