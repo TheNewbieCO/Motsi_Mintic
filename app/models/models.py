@@ -76,7 +76,7 @@ class Aves(Base):
 
 
 class Activity2(Base):
-    __tablename__ = "activity"
+    __tablename__ = "activity2"
 
     id_activity = Column(Integer, primary_key=True, index=True)
     id_user = Column(Integer)
