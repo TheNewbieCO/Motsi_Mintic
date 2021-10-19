@@ -26,6 +26,8 @@ def get_all_user_activities(token =Depends(oauth2_schema),db: Session = Depends(
     if data:
         db_activities= db.query(Activity2).filter(Activity2.id_user== data["user_id"]).all()
         print(data["user_id"])
+        print(db_activities)
+        print(db.query(Activity2))
         return db_activities
     else:
         raise HTTPException(401, "La sesión ha expirado")
