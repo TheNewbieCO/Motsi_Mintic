@@ -29,7 +29,7 @@ def get_all_user_activities(token =Depends(oauth2_schema),db: Session = Depends(
         raise HTTPException(401, "La sesión ha expirado")
 
         
-def create_activity(token =Depends(oauth2_schema), activity ,db):
+def create_activity(activity ,db, user):
 
     activity = Activity2(
         created_at = datetime.now(),
@@ -37,7 +37,8 @@ def create_activity(token =Depends(oauth2_schema), activity ,db):
         activity_ammount = activity.activity_ammount,
         activity_media_file = activity.activity_media_file,
         #id_time_unit = activity.id_time_unit        
-        id_time_unit = 8 
+        id_time_unit = 8,
+        id_user= user
     )
 
     db.add(activity)

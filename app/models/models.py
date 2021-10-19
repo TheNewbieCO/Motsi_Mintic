@@ -79,7 +79,7 @@ class Activity2(Base):
     __tablename__ = "activity"
 
     id_activity = Column(Integer, primary_key=True, index=True)
-    id_user = Column(Integer, ForeignKey("user.id_user"))
+    id_user = Column(Integer)
     activity_description = Column(String)
     activity_media_file = Column(String)
     activity_ammount = Column(Integer)
