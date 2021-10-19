@@ -21,11 +21,9 @@ def get_user( activity: Activity2=Depends(activity_providers.get_all_user_activi
         
 @app.post("/api/v1/create_activty/", tags=["Activities"])
 
-def create_activity(
-    activity: schemas.ActivityCreate,
-    db: Session = Depends(get_db)):
+def create_activity(token ,activity: schemas.ActivityCreate, db: Session = Depends(get_db)):
     try:
-        return activity_providers.create_activity(activity, db)
+        return activity_providers.create_activity(token, activity, db)
     except Exception as e:
         return (e)
 
