@@ -19,6 +19,7 @@ def create_access_token(user,days=12):
         "username":user.email,
         "exp":datetime.utcnow() + timedelta(hours=days)
     }
+
     return jwt.encode(data, SECRET_KEY, algorithm="HS256")
 
 
@@ -28,8 +29,11 @@ def create_access_token(user,days=12):
 def decode_access_token(token):
 
     try:
+
         return jwt.decode(token, SECRET_KEY, algorithms="HS256")
+
     except Exception as err:
+
         return None
 
 
@@ -38,8 +42,12 @@ def decode_access_token(token):
 def get_current_user ( token: str = Depends(oauth2_schema), db: Session = Depends(get_db) ) ->User :
 
     data= decode_access_token(token)
+    
     if data:
+
         db_user = db.query(User).filter(User.id_user == data["user_id"]).first()
         return db_user
+
     else:
+
         raise HTTPException(401, "La sesión ha expirado")

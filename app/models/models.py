@@ -52,12 +52,6 @@ class User(Base):
         h.update(password.encode("utf-8"))
         return h.hexdigest()
 
-#    created_at = Column(String)
-#    update_at = Column(DateTime)
-#    rnt = Column(String)
-
-#    id_role = Column(Integer, ForeignKey("role.id_role"))
-
 class TimeUnit(Base):
     __tablename__ = "time_unit"
     id_time_unit = Column(Integer, primary_key=True, index=True)
@@ -65,12 +59,10 @@ class TimeUnit(Base):
 
 class Amenity(Base):
     __tablename__ = "amenity"
-
     id_amenity= Column(Integer, primary_key=True, index=True)
     amenity_description = Column(String)
     amenity_media_file = Column(String)
-
-    id_activity = Column(Integer, ForeignKey("activity.id_activity"))
+    id_user = Column(Integer, ForeignKey("User.id_user"))
 
 #-------Clase de Aves - Jose ---------
 class Aves(Base):
@@ -82,7 +74,7 @@ class Aves(Base):
 
 
 
-class Activity(Base):
+class Activity2(Base):
     __tablename__ = "activity"
 
     id_activity = Column(Integer, primary_key=True, index=True)

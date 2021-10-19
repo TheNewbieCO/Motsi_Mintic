@@ -27,6 +27,8 @@ def get_user( user: User=Depends(get_current_user)):
 
     return user
 
+
+
 @app.post("/api/v1/create_user/", tags=["Users"])
 def create_user(
     user: schemas.UserCreate,
@@ -35,10 +37,15 @@ def create_user(
 
     return user_providers.create_user(user, db)
 
+
+
 @app.put("/api/v1/update_user/", tags=["Users"])
 def update_user(user: schemas.UserUpdate,db: Session = Depends(get_db)):
 
     return user_providers.update_user(user, db)
+
+
+
 try:   
     @app.post("/api/v1/auth/")
     async def  auth (data: OAuth2PasswordRequestForm=Depends(), db: Session = Depends(get_db)):
